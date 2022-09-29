@@ -2,6 +2,7 @@
 sudo apt update
 sudo apt upgrade -y
 sudo apt install net-tools
+sudo apt install whois
 sudo apt install php -y  
 apt install python -y
 apt install nmap -y
