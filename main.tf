@@ -1,10 +1,19 @@
 terraform {
-  backend "azurerm" {
-    resource_group_name  = "erasemeopstfstates"
-    storage_account_name = "erasemetfstatedevops"
-    container_name       = "terraformgithubexample"
-    key                  = "terraformgithubexample.tfstate"
+  required_providers {
+    azurerm = {
+        source  = "hashicorp/azurerm"
+        version = "=3.0.0"
+    }
   }
+  backend "azurerm" {
+    resource_group_name     = "rg-terraform-state-001"
+    storage_account_name    = "erasememdterraformstate"
+    container_name          = "tfstate"
+    key                     = "GitHub-Terraform-rg-connectivity-001"
+  }
+}
+provider "azurerm" {
+  features {}
 }
 
 # Generate random password
