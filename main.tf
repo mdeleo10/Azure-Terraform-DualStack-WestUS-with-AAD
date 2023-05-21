@@ -1,20 +1,4 @@
-terraform {
-  required_providers {
-    azurerm = {
-        source  = "hashicorp/azurerm"
-        version = "=3.0.0"
-    }
-  }
-  backend "azurerm" {
-    resource_group_name     = "rg-terraform-state-001"
-    storage_account_name    = "erasememdterraformstate"
-    container_name          = "tfstate"
-    key                     = "GitHub-Terraform-rg-connectivity-001"
-  }
-}
-provider "azurerm" {
-  features {}
-}
+
 
 # Generate random password
 resource "random_password" "linux-vm-password" {
