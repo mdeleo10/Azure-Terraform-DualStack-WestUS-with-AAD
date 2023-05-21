@@ -211,10 +211,6 @@ resource "azurerm_linux_virtual_machine" "myterraformvm" {
 # Custom Data is equivalent to "cloud-init" bootstrapping
   custom_data                         = base64encode(data.template_file.azure-ubuntu-boot.rendered)
 
-  admin_ssh_key {
-    username = var.admin_username
-    public_key = file("/Users/mdeleo/.ssh/id_rsa.pub")
-  }
 
   boot_diagnostics {
     storage_account_uri = azurerm_storage_account.mystorageaccount.primary_blob_endpoint
