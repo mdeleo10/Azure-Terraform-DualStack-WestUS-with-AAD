@@ -1,7 +1,7 @@
 terraform {
   backend "azurerm" {
     resource_group_name  = "erasemeopstfstates"
-    storage_account_name = "tfstatedevops"
+    storage_account_name = "erasemetfstatedevops"
     container_name       = "terraformgithubexample"
     key                  = "terraformgithubexample.tfstate"
   }
