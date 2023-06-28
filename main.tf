@@ -195,7 +195,7 @@ resource "azurerm_linux_virtual_machine" "myterraformvm" {
 #    offer     = "UbuntuServer"
      offer     = "0001-com-ubuntu-server-focal"
 #    sku       = "18.04-LTS"
-     sku       = "20_04-lts-gen2"
+     sku       = "22_04-lts"
     version    = "latest"
   }
 
