@@ -190,14 +190,18 @@ resource "azurerm_linux_virtual_machine" "myterraformvm" {
     storage_account_type = "Premium_LRS"
   }
 
+# To review the latest available image:
+#   az vm image list --all --publisher Canonical | \
+#      jq '[.[] | select(.sku=="22_04-lts")]| max_by(.version)'
+#
   source_image_reference {
     publisher  = "Canonical"
 #    offer     = "UbuntuServer"
      offer     = "0001-com-ubuntu-server-focal"
 #    sku       = "18.04-LTS"
      sku       = "22_04-lts"
-    version    = "latest"
-#     version   = "22.04.202306200"
+#   version    = "latest"
+     version   = "22.04.202306200"
   }
 
   computer_name                       = azurerm_resource_group.rg.location
