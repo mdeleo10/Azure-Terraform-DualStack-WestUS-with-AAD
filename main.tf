@@ -200,8 +200,8 @@ resource "azurerm_linux_virtual_machine" "myterraformvm" {
      offer     = "0001-com-ubuntu-server-focal"
 #    sku       = "18.04-LTS"
      sku       = "22_04-lts-gen2"
-   version    = "latest"
-#     version   = "22.04.202306200"
+#   version    = "latest"
+     version   = "22.04.202306200"
   }
 
   computer_name                       = azurerm_resource_group.rg.location
