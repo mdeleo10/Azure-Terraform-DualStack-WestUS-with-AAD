@@ -185,7 +185,7 @@ resource "azurerm_linux_virtual_machine" "myterraformvm" {
   size                  = "Standard_B1s"
 
   os_disk {
-    name                 = "ubuntu-OsDisk"
+    name                 = "ubuntu--${var.resource_group_location}-OsDisk"
     caching              = "ReadWrite"
     storage_account_type = "Premium_LRS"
   }
@@ -196,12 +196,9 @@ resource "azurerm_linux_virtual_machine" "myterraformvm" {
 #
   source_image_reference {
     publisher  = "Canonical"
-#    offer     = "UbuntuServer"
-     offer     = "0001-com-ubuntu-server-jammy"
-#    sku       = "18.04-LTS"
-     sku       = "22_04-lts"
-   version    = "latest"
-#     version   = "22.04.202306200"
+    offer      = "0001-com-ubuntu-server-jammy"
+    sku        = "22_04-lts"
+    version    = "latest"
   }
 
   computer_name                       = azurerm_resource_group.rg.location
