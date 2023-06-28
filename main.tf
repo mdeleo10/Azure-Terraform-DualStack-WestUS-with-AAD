@@ -44,7 +44,7 @@ resource "azurerm_subnet" "myterraformsubnet" {
 
 # Create public IPs
 resource "azurerm_public_ip" "myterraformpublicip" {
-  name                = "ubuntu-PublicIP"
+  name                = "ubuntu-PublicIP-${var.resource_group_location}"
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
   allocation_method   = "Static"
@@ -55,7 +55,7 @@ resource "azurerm_public_ip" "myterraformpublicip" {
 # Create public IPv6s
 
 resource "azurerm_public_ip" "myterraformpublicipv6" {
-  name                = "ubuntu-PublicIPv6"
+  name                = "ubuntu-PublicIPv6-${var.resource_group_location}"
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
   allocation_method   = "Static"
@@ -67,7 +67,7 @@ resource "azurerm_public_ip" "myterraformpublicipv6" {
 
 # Create Network Security Group and rule
 resource "azurerm_network_security_group" "myterraformnsg" {
-  name                = "ubuntu-NetworkSecurityGroup"
+  name                = "ubuntu-NetworkSecurityGroup-${var.resource_group_location}"
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
 
@@ -124,7 +124,7 @@ resource "azurerm_network_security_group" "myterraformnsg" {
 
 # Create network interface
 resource "azurerm_network_interface" "myterraformnic" {
-  name                = "ubuntu-NIC"
+  name                = "ubuntu-NIC-${var.resource_group_location}"
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
 
