@@ -29,7 +29,7 @@ resource "azurerm_resource_group" "rg" {
 # Create virtual network
 resource "azurerm_virtual_network" "myterraformnetwork" {
   name                = "ubuntu-Vnet-${var.resource_group_location}"
-  address_space       = ["10.0.0.0/16","ace:cab:deca::/48"]
+  address_space       = ${var.vnet-address-space}
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
 }
@@ -39,7 +39,7 @@ resource "azurerm_subnet" "myterraformsubnet" {
   name                 = "ubuntu-Subnet"
   resource_group_name  = azurerm_resource_group.rg.name
   virtual_network_name = azurerm_virtual_network.myterraformnetwork.name
-  address_prefixes     = ["10.0.1.0/24","ace:cab:deca:1::/64"]
+  address_prefixes     = ${var.vnet-address-space-subnet}
 }
 
 # Create public IPs
