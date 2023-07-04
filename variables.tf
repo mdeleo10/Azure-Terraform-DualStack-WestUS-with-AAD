@@ -16,11 +16,11 @@ variable "admin_username" {
 variable "vnet-address-space" {
   type          = list
   default       = ["10.0.0.0/16","ace:cab:deca::/48"]
-  description   = "Administrator Username"
+  description   = "Vnet Address Space"
 }
 
 variable "vnet-address-space-subnet"  {
   type          = list
   default       = ["10.0.1.0/24","ace:cab:deca:1::/64"]
-  description   = "Administrator Username"
+  description   = "Subnet Address Space"
 }
