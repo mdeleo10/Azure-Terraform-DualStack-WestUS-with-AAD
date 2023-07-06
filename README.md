@@ -11,7 +11,7 @@ It has the following variables defined in the file variables.rf
 
 It is setup to run Actions upon code change and deploy
 
-#Prerequistes:
+## Prerequistes:
 
 Action Secrets:
 - AZURE_AD_CLIENT_ID (Service Principal)
@@ -19,18 +19,18 @@ Action Secrets:
 - AZURE_AD_TENANT_ID
 - AZURE_SUBSCRIPTION_ID
 
-Also needs an existing Resource Group rg-terraform-state-001
+### Also needs an existing Resource Group rg-terraform-state-001
 - Storage Account
 - Key Vault with secret "sshIDpub" in the ssh public key string format example "ssh-rsa KKKKKKeyKKKKK userid@xxx.com"
 Note: Storage Account must have IAM permissions for Storage Account contributor and Key Vault Administrator
 
-## Create Resource Group
+### Create Resource Group
 az group create -n tamopstfstates -l eastus
  
-## Create Storage Account
+### Create Storage Account
 az storage account create -n tamopstf0000 -g tamopstfstates -l eastus2 --sku Standard_LRS
  
-## Create Storage Account Container
+### Create Storage Account Container
 az storage container create -n tfstatedevops0000 
 
 #Adding support for Azure Active Directory to Azure Linux
