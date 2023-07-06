@@ -53,3 +53,4 @@ Optional based upon proper install of ssh Public Key
 
 - https://www.cloudninja.nu/post/2022/06/github-terraform-azure-part1/
 - https://thomasthornton.cloud/2021/03/19/deploy-terraform-using-github-actions-into-azure/
+- https://thomasthornton.cloud/2022/02/26/referencing-azure-key-vault-secrets-in-terraform/
