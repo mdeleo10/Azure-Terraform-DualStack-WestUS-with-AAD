@@ -44,6 +44,9 @@ See https://docs.microsoft.com/en-us/azure/active-directory/devices/howto-vm-sig
 4. You can optionally download the OpenSSH keys to directly "ssh" in from the OS "az ssh config --file ~/.ssh/config -n ubuntu-westus3 -g rg-DualStack-westus3"
 5. If you going to automate operations on the host, it is best not use a user credential and best create a "Service Principal" with the limited RBAC rights.
 
+Optional based upon proper install of ssh Public Key
+- ssh adminuser@VM-IP (will use ssh private key to login)
+
 ## See     .github/workflows/terraform.yml file for Action execution
 
 # References:
