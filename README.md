@@ -19,7 +19,7 @@ Action Secrets:
 - AZURE_AD_TENANT_ID
 - AZURE_SUBSCRIPTION_ID
 
-Also needed an existing Resource Group rg-terraform-state-001
+Also needs an existing Resource Group rg-terraform-state-001
 - Storage Account
 - Key Vault with secret "sshIDpub" in the ssh public key string format example "ssh-rsa KKKKKKeyKKKKK userid@xxx.com"
 Note: Storage Account must have IAM permissions for Storage Account contributor and Key Vault Administrator
@@ -33,11 +33,11 @@ az storage account create -n tamopstf0000 -g tamopstfstates -l eastus2 --sku Sta
 ## Create Storage Account Container
 az storage container create -n tfstatedevops0000 
 
-Adding support for Azure Active Directory to Azure Linux
+#Adding support for Azure Active Directory to Azure Linux
 
 See https://docs.microsoft.com/en-us/azure/active-directory/devices/howto-vm-sign-in-azure-ad-linux and https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/virtual_machine_extension
 
-Notes for AAD:
+#Notes for AAD:
 1. Need to login using "az login"
 2. Also need to add users to role: Virtual Machine User Login and optional Virtual Machine Administrator Login at resource group or higher
 3. Remote access to the Linux host using "az ssh vm -n ubuntu-westus3 -g rg-DualStack-westus3".
