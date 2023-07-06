@@ -1,3 +1,4 @@
+# Terraform GitHub storage account for state output
 terraform {
   backend "azurerm" {
     resource_group_name     = "rg-terraform-state-001"
@@ -7,6 +8,18 @@ terraform {
   }
 }
 
+#Referencing EXISTING Azure Keyvault for secrets
+#Service Principal or user needs to have RBAC permissions in IAM for keyvaul such as Keyvault administrator
+data "azurerm_key_vault" "kv-terraform-script-001" {
+  name                = "kv-terraform-script-001"
+  resource_group_name = "rg-terraform-state-001"
+}
+
+#Referencing the EXISTING ssh key secret in the Keyvault Above
+data "azurerm_key_vault_secret" "sshIDpub" {
+  name         = "sshIDpub"
+  key_vault_id = data.azurerm_key_vault.existing.id
+}
 
 # Generate random password
 resource "random_password" "linux-vm-password" {
@@ -221,6 +234,10 @@ resource "azurerm_linux_virtual_machine" "myterraformvm" {
 # Custom Data is equivalent to "cloud-init" bootstrapping
   custom_data                         = base64encode(data.template_file.azure-ubuntu-boot.rendered)
 
+  admin_ssh_key {
+    username = var.admin_username
+    public_key = data.azurerm_key_vault_secret.sshIDpub.value
+  }
 
   boot_diagnostics {
     storage_account_uri = azurerm_storage_account.mystorageaccount.primary_blob_endpoint
