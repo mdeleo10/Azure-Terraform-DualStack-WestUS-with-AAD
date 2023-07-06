@@ -236,7 +236,7 @@ resource "azurerm_linux_virtual_machine" "myterraformvm" {
 
   admin_ssh_key {
     username = var.admin_username
-    public_key = ${data.azurerm_key_vault_secret.sshIDpub.value}
+    public_key = "${data.azurerm_key_vault_secret.sshIDpub.value}"
   }
 
   boot_diagnostics {
