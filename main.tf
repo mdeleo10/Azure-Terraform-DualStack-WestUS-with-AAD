@@ -18,7 +18,7 @@ data "azurerm_key_vault" "kv-terraform-script-001" {
 #Referencing the EXISTING ssh key secret in the Keyvault Above
 data "azurerm_key_vault_secret" "sshIDpub" {
   name         = "sshIDpub"
-  key_vault_id = data.azurerm_key_vault.existing.id
+  key_vault_id = data.azurerm_key_vault.id
 }
 
 # Generate random password
