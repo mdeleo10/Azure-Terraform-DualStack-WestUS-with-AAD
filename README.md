@@ -1,5 +1,37 @@
-# Terraform-DualStack-WestUS-with-AAD
+# Azure-Terraform-DualStack-WestUS-with-AAD
 
+This Azure Terraform template creates an Ubuntu latest version.
+
+It has the following variables defined in the file variables.rf
+- Resource Group Name
+- Resource Region Location
+- Admin Username
+- Vnet Address Space
+- Vnet Subnet Address Space
+
+It is setup to run Actions upon code change and deploy
+
+#Prerequistes:
+
+Action Secrets:
+- AZURE_AD_CLIENT_ID (Service Principal)
+- AZURE_AD_CLIENT_SECRET (Password)
+- AZURE_AD_TENANT_ID
+- AZURE_SUBSCRIPTION_ID
+
+Also needed an existing Resource Group rg-terraform-state-001
+- Storage Account
+- Key Vault with secret "sshIDpub" in the ssh public key string format example "ssh-rsa KKKKKKeyKKKKK userid@xxx.com"
+Note: Storage Account must have IAM permissions for Storage Account contributor and Key Vault Administrator
+
+## Create Resource Group
+az group create -n tamopstfstates -l eastus
+ 
+## Create Storage Account
+az storage account create -n tamopstf0000 -g tamopstfstates -l eastus2 --sku Standard_LRS
+ 
+## Create Storage Account Container
+az storage container create -n tfstatedevops0000 
 
 Adding support for Azure Active Directory to Azure Linux
 
