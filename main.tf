@@ -244,7 +244,7 @@ resource "azurerm_linux_virtual_machine" "myterraformvm" {
   }
   
   tags = {
-    environment = "Staging"
+    environment = "Test"
   }
   
 }
