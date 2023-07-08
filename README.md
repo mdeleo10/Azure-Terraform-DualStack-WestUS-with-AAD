@@ -30,10 +30,6 @@ Action Secrets:
 - Storage Account and IAM access, for example contributor, for cloudmdterraformstate in RG rg-terraform-state-001.
 - Key Vault kv-terraform-script-001 in RG rg-terraform-state-001, with secret "sshIDpub" in the ssh public key string format example "ssh-rsa KKKKKKeyKKKKK userid@xxx.com". Note need to add IAM access, for example Key Vault Administrator to access and read keys 
 
-### Note3 : Storage Account must have IAM permissions for Storage Account contributor and Key Vault Administrator
-- Check all app rights in Azure Active Directory for Service Principal (SPs do not support group assignments)
-- Azure Active Directory/Roles and Permissions for
-- 
 
 ## Adding support for Azure Active Directory to Azure Linux
 
