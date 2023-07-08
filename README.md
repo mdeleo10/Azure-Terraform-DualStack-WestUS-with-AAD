@@ -27,21 +27,13 @@ Action Secrets:
 - Create NSG
 
 ### Note 2: Also needed access to the existing Resource Group rg-terraform-state-001 for the following:
-- Storage Account
-- Key Vault with secret "sshIDpub" in the ssh public key string format example "ssh-rsa KKKKKKeyKKKKK userid@xxx.com"
+- Storage Account and IAM access, for example contributor, for cloudmdterraformstate in RG rg-terraform-state-001.
+- Key Vault kv-terraform-script-001 in RG rg-terraform-state-001, with secret "sshIDpub" in the ssh public key string format example "ssh-rsa KKKKKKeyKKKKK userid@xxx.com". Note need to add IAM access, for example Key Vault Administrator to access and read keys 
 
 ### Note3 : Storage Account must have IAM permissions for Storage Account contributor and Key Vault Administrator
 - Check all app rights in Azure Active Directory for Service Principal (SPs do not support group assignments)
-- Azure Active Directory/Roles and Permissions
-
-### Create Resource Group
-az group create -n tamopstfstates -l eastus
- 
-### Create Storage Account
-az storage account create -n tamopstf0000 -g tamopstfstates -l eastus2 --sku Standard_LRS
- 
-### Create Storage Account Container
-az storage container create -n tfstatedevops0000 
+- Azure Active Directory/Roles and Permissions for
+- 
 
 ## Adding support for Azure Active Directory to Azure Linux
 
