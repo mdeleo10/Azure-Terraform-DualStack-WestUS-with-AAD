@@ -1,6 +1,6 @@
 # Azure-Terraform-DualStack-WestUS-with-AAD
 
-This Azure Terraform template creates an Ubuntu latest version.
+This Azure Terraform template creates a Dual Stack (IPv4/IPv6) Ubuntu latest version with the Active Directory Authentication for user login.
 
 It has the following variables defined in the file variables.rf
 - Resource Group Name
@@ -9,20 +9,30 @@ It has the following variables defined in the file variables.rf
 - Vnet Address Space
 - Vnet Subnet Address Space
 
-It is setup to run Actions upon code change and deploy
+Guthub is setup for a workflow to to run Actions upon code change (push) and deploy/redploy as needed. 
 
 ## Prerequistes:
 
 Action Secrets:
 - AZURE_AD_CLIENT_ID (Service Principal)
-- AZURE_AD_CLIENT_SECRET (Password)
+- AZURE_AD_CLIENT_SECRET (Service Principal Password)
 - AZURE_AD_TENANT_ID
 - AZURE_SUBSCRIPTION_ID
 
-### Also needs an existing Resource Group rg-terraform-state-001
+### Note: The Service Principal needs to have the RBAC rights over the subscription to 
+- Create a Resource Group
+- Create a VM
+- Create A Vnet and subnet
+- Create Public IP addresses (IPv4 and IPv6)
+- Create NSG
+
+### Note 2: Also needed access to the existing Resource Group rg-terraform-state-001 for the following:
 - Storage Account
 - Key Vault with secret "sshIDpub" in the ssh public key string format example "ssh-rsa KKKKKKeyKKKKK userid@xxx.com"
-Note: Storage Account must have IAM permissions for Storage Account contributor and Key Vault Administrator
+
+### Note3 : Storage Account must have IAM permissions for Storage Account contributor and Key Vault Administrator
+- Check all app rights in Azure Active Directory for Service Principal (SPs do not support group assignments)
+- Azure Active Directory/Roles and Permissions
 
 ### Create Resource Group
 az group create -n tamopstfstates -l eastus
