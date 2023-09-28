@@ -8,6 +8,24 @@ terraform {
   }
 }
 
+# Terraform GitHub storage account for state output
+#
+#
+# Create Storage Account Container
+# Suggestion: create tfstate-repo-name, needs to be lower case only
+#
+# az storage container create -n tftstate-azure-terraform-dualstack-brazilsouth --account-name  cloudmdterraformstate
+#
+#terraform {
+#  backend "azurerm" {
+#    resource_group_name     = "rg-terraform-state-001"
+#    storage_account_name    = "cloudmdterraformstate"
+#    container_name          = "tftstate-azure-terraform-dualstack-brazilsouth"
+#    key                     = "tfstate"
+#  }
+#}
+
+
 #Referencing EXISTING Azure Keyvault for secrets
 #Service Principal or user needs to have RBAC permissions in IAM for keyvaul such as Keyvault administrator
 data "azurerm_key_vault" "kv-terraform-script-001" {
